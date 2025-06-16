@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
     name: 'production',
-    apiUrl: 'https://api-production.ejemplo.com'
+    apiUrl: 'https://lfelipe88.github.io/Rickymortyweb/'
   };
