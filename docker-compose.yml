@@ -6,6 +6,6 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "4400:80"
+      - "4900:80"
     container_name: testmorti-app
 
