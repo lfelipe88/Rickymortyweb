@@ -1,0 +1,34 @@
+<div class="container">
+  <h1>Rick and Morty Explorer by LFELIPE</h1>
+
+  <input type="text" [value]="search()" (input)="updateSearch($any($event.target).value)"
+    placeholder="Buscar personaje..." class="search" />
+
+  <div class="grid">
+    <div class="card" *ngFor="let c of characters()" (click)="openCharacter(c.id)">
+      <img [src]="c.image" alt="{{ c.name }}" />
+      <h3>{{ c.name }}</h3>
+      <p>{{ c.species }} - {{ c.status }}</p>
+    </div>
+  </div>
+
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="page() === 1">Anterior</button>
+    <span>Página {{ page() }} de {{ totalPages() }}</span>
+    <button (click)="nextPage()" [disabled]="page() === totalPages()">Siguiente</button>
+  </div>
+</div>
+
+<!-- Modal centrado -->
+<div class="modal-backdrop" *ngIf="selectedCharacter()" (click)="closeModal()">
+  <div class="modal-card" (click)="$event.stopPropagation()">
+    <button class="close-button" (click)="closeModal()">×</button>
+    <img [src]="selectedCharacter()!.image" alt="{{ selectedCharacter()!.name }}" />
+    <h2>{{ selectedCharacter()!.name }}</h2>
+    <p><strong>Status:</strong> {{ selectedCharacter()!.status }}</p>
+    <p><strong>Species:</strong> {{ selectedCharacter()!.species }}</p>
+    <p><strong>Gender:</strong> {{ selectedCharacter()!.gender }}</p>
+    <p><strong>Origin:</strong> {{ selectedCharacter()!.origin.name }}</p>
+    <p><strong>Location:</strong> {{ selectedCharacter()!.location.name }}</p>
+  </div>
+</div>
